@@ -1,13 +1,9 @@
-# _Personal Blog: Web-based Fullstack Application_
+# _Personal Blog_
 
 ## _Overview_
 
-The goal of this project is to create a custom blog, learn more about developing web applications as well as React, Node.js, and cloud-based technologies such as AWS. 
+Creating a working fullstack web application that will serve as a personal blog. Some of the goals about this projects are to learn new technologies and frameworks such as React, Node.js, and cloud services like AWS. 
 
-## _Requirements_
 
-### _Expected behavior_
-
->this captures what is needed. this needs to be as descriptive as possible.
 
 

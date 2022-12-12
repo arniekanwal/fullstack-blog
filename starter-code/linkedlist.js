@@ -59,7 +59,8 @@ class LinkedList {
     // Insert at index
     insert_at(item, index) {
         if (index < 0 || index >= this.size) {
-            return
+            console.error("index does not exist");
+            return;
         } else if (index === 0) {
             this.push_front(item);
         } else if (index === this.size - 1) {
@@ -82,22 +83,43 @@ class LinkedList {
 
     // Get at index
     value_at(index) {
-
+        if (index < 0 || index >= this.size) {
+            console.error("index does not exist");
+            return;
+        }
+        let curr = this.head;
+        for (let i = 0; i < index; i++) {
+            curr = curr.next;
+        }
+        return curr.data;
     }
 
     // Delete at head
     pop_front() {
-
+        if (!this.head) {
+            return;
+        } else if (this.tail === this.head) {
+            this.head = this.tail = null;
+            this.size--;
+        } else {
+            this.head = this.head.next;
+            this.head.prev = null;
+            this.size--;
+        }
     }
 
     // Delete at tail
     pop_back() {
-
-    }
-
-    // Delete at index
-    delete_at(index) {
-
+        if (!this.tail) {
+            return;
+        } else if (this.tail === this.head) {
+            this.head = this.tail = null;
+            this.size--;
+        } else {
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+            this.size--;
+        }
     }
 
     // Clear list
@@ -129,9 +151,15 @@ ll.insert_at(-1, 0);
 ll.insert_at(7, 6);
 ll.insert_at(3, 3);
 ll.insert_at(-2, 0);
+ll.pop_back();
+ll.pop_front();
+ll.insert_at(29,0);
+// Expected List := 29, -1, 0, 1, 2, 3, 4, 5, 6 (size: 9)
 ll.print_list();
 ll.get_size();
 
+// Clear list and see what happens
 ll.clear();
+ll.push_front(30);
 ll.print_list();
 ll.get_size();
