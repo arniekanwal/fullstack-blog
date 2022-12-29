@@ -4,7 +4,7 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
 import Login from "./pages/Login";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
     return (
