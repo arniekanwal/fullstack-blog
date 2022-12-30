@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
 import { AuthProvider } from './contexts/AuthContext';
 
 // Pages
@@ -9,28 +8,41 @@ import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
+import UpdateProfile from './pages/UpdateProfile';
+
+// Components
+import PrivateRoute from "./components/PrivateRoute";
 
 // Bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UpdateProfile from './pages/UpdateProfile';
+
 
 export default function App() {
     return (
         <>
-        {/* <Container className="d-flex align-items-center justify-content-center"
-            style= {{ minHeight: "100vh"}}>
-            <div className="w-100" style={{ maxWidth: '400px'}}>
-                <Signup />
-            </div>
-        </Container> */}
-
         <BrowserRouter>
             <AuthProvider>
                 <Routes>
                     <Route path="/" element={<Layout />}>
-                        <Route index element={<Home />} />
+                        <Route path='/'
+                            element = {
+                                <PrivateRoute>
+                                    <Home />
+                                </PrivateRoute>
+                            }></Route>
+                        <Route path='/update-profile'
+                            element = {
+                                <PrivateRoute>
+                                    <UpdateProfile />
+                                </PrivateRoute>
+                            }></Route>
+                        {/* <Route index element={<Home />} /> */}
                         <Route path="blogs" element={<Blogs />} />
-                        <Route path="Login" element={<Login />} />
-                        <Route path="Signup" element={<Signup />} /> 
+                        <Route path="login" element={<Login />} />
+                        <Route path="signup" element={<Signup />} /> 
+                        <Route path="/forgot-password" element={<ForgotPassword />} />
                     </Route>
                 </Routes>
             </AuthProvider>
