@@ -16,7 +16,6 @@ import PrivateRoute from "./components/PrivateRoute";
 
 // Bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css';
-import UpdateProfile from './pages/UpdateProfile';
 
 
 export default function App() {
