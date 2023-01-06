@@ -6,8 +6,8 @@ Creating a working fullstack web application that will serve as a personal blog.
 
 ## _Intermediate Goals_
 
-* remove global navbar and add navigation to two home pages
-* Modify styling for update/logout buttons on user-homepage
-* integrate material-ui styling/themes into both home pages
+* finish material ui integration for default home page
+* change styling for user home page
+* make all buttons work (efficiently)
 * add elements and styling to blog page
 * setup firebase datastore, integrate api, create schema and add blogs/images
