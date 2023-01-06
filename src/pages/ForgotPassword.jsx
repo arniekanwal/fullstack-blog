@@ -35,12 +35,12 @@ export default function ForgotPassword() {
             
             <Card>
                 <Card.Body>
-                    <h2 className="text-center mb-4">Forgot Password</h2>
+                    <h2 className="text-center mb-2">Forgot Password</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
                     {message && <Alert variante="success">{message}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id="email">
-                            <Form.Label>Email</Form.Label>
+                            <Form.Label className='mt-2'>Email</Form.Label>
                             <Form.Control type="email" ref={emailRef} required />
                         </Form.Group>
                         <Button disabled={loading} className="w-100 text-center mt-2" type="submit">

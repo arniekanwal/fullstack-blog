@@ -24,7 +24,7 @@ export default function App() {
         <BrowserRouter>
             <AuthProvider>
                 <Routes>
-                    <Route path="/" element={<Layout />}>
+                    {/* <Route path="/" element={<Layout />}> */}
                         <Route path='/'
                             element = {
                                 <PrivateRoute>
@@ -42,7 +42,7 @@ export default function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} /> 
                         <Route path="/forgot-password" element={<ForgotPassword />} />
-                    </Route>
+                    {/* </Route> */}
                 </Routes>
             </AuthProvider>
         </BrowserRouter>
