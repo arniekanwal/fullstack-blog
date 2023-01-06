@@ -4,7 +4,8 @@ import { AuthProvider } from './contexts/AuthContext';
 
 // Pages
 import Layout from "./pages/Layout";
-import Home from "./pages/Home";
+import DefaultHome from "./pages/DefaultHome";
+import UserHome from "./pages/UserHome";
 import Blogs from "./pages/Blogs";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -17,7 +18,6 @@ import PrivateRoute from "./components/PrivateRoute";
 // Bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 export default function App() {
     return (
         <>
@@ -28,7 +28,7 @@ export default function App() {
                         <Route path='/'
                             element = {
                                 <PrivateRoute>
-                                    <Home />
+                                    <UserHome />
                                 </PrivateRoute>
                             }></Route>
                         <Route path='/update-profile'
@@ -37,10 +37,10 @@ export default function App() {
                                     <UpdateProfile />
                                 </PrivateRoute>
                             }></Route>
-                        {/* <Route index element={<Home />} /> */}
-                        <Route path="blogs" element={<Blogs />} />
-                        <Route path="login" element={<Login />} />
-                        <Route path="signup" element={<Signup />} /> 
+                        <Route path ="/defaulthome" element={<DefaultHome />} />
+                        <Route path="/blogs" element={<Blogs />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/signup" element={<Signup />} /> 
                         <Route path="/forgot-password" element={<ForgotPassword />} />
                     </Route>
                 </Routes>
