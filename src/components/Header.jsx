@@ -25,17 +25,17 @@ function Header(props) {
         >
           {title}
         </Typography>
-        <Button variant="outlined" size="small" onClick={navigate("/login")}>
+        <Button size="small" onClick={() => navigate("/login")}>
             Log In
         </Button>
-        <Button variant="outlined" size="small" onClick={navigate("/signup")}>
+        <Button size="small" onClick={() => navigate("/signup")}>
             Sign up
         </Button>
       </Toolbar>
       <Toolbar
         component="nav"
         variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
+        sx={{ justifyContent: 'center', overflowX: 'auto' }}
       >
         {sections.map((section) => (
           <Link

@@ -6,8 +6,5 @@ Creating a working fullstack web application that will serve as a personal blog.
 
 ## _Intermediate Goals_
 
-* finish material ui integration for default home page
-* change styling for user home page
-* make all buttons work (efficiently)
-* add elements and styling to blog page
+* Update userhome to use same styling/components as default (but change header appropiate to user)
 * setup firebase datastore, integrate api, create schema and add blogs/images

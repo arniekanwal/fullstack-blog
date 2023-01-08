@@ -1,31 +1,26 @@
-import * as React from 'react';
+// Material UI Themes
+import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-// import GitHubIcon from '@mui/icons-material/GitHub';
-// import FacebookIcon from '@mui/icons-material/Facebook';
-// import TwitterIcon from '@mui/icons-material/Twitter';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+// My Blog Components
 import Header from '../components/Header';
-// import MainFeaturedPost from './MainFeaturedPost';
-// import FeaturedPost from './FeaturedPost';
-// import Main from './Main';
-// import Sidebar from './Sidebar';
+import FeaturedPost from '../components/FeaturedPost';
+import OtherPosts from '../components/OtherPosts';
+// import Main from '../components/Main';
+// import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
-// import post1 from './blog-post.1.md';
-// import post2 from './blog-post.2.md';
-// import post3 from './blog-post.3.md';
+import post1 from '../blog-post1.md';
+
 
 const sections = [
   { title: 'Technology', url: '#' },
-  { title: 'Design', url: '#' },
-  { title: 'Culture', url: '#' },
   { title: 'Business', url: '#' },
   { title: 'Politics', url: '#' },
   { title: 'Opinion', url: '#' },
   { title: 'Science', url: '#' },
-  { title: 'Health', url: '#' },
-  { title: 'Style', url: '#' },
   { title: 'Travel', url: '#' },
 ];
 
@@ -57,7 +52,7 @@ const featuredPosts = [
   },
 ];
 
-// const posts = [post1, post2, post3];
+const posts = [post1];
 
 const sidebar = {
   title: 'About',
@@ -75,12 +70,7 @@ const sidebar = {
     { title: 'June 1999', url: '#' },
     { title: 'May 1999', url: '#' },
     { title: 'April 1999', url: '#' },
-  ],
-  social: [
-    // { name: 'GitHub', icon: GitHubIcon },
-    // { name: 'Twitter', icon: TwitterIcon },
-    // { name: 'Facebook', icon: FacebookIcon },
-  ],
+  ]
 };
 
 const theme = createTheme();
@@ -91,14 +81,14 @@ export default function DefaultHome() {
       <CssBaseline />
       <Container maxWidth="lg">
         <Header title="The Anonymous American" sections={sections} />
-        {/* <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
+        <main>
+          <FeaturedPost post={mainFeaturedPost} />
           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
-              <FeaturedPost key={post.title} post={post} />
+              <OtherPosts key={post.title} post={post} />
             ))}
           </Grid>
-          <Grid container spacing={5} sx={{ mt: 3 }}>
+          {/* <Grid container spacing={5} sx={{ mt: 3 }}>
             <Main title="From the firehose" posts={posts} />
             <Sidebar
               title={sidebar.title}
@@ -106,8 +96,8 @@ export default function DefaultHome() {
               archives={sidebar.archives}
               social={sidebar.social}
             />
-          </Grid>
-        </main> */}
+          </Grid> */}
+        </main>
       </Container>
       <Footer/>
     </ThemeProvider>
