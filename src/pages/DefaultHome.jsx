@@ -9,10 +9,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../components/Header';
 import FeaturedPost from '../components/FeaturedPost';
 import OtherPosts from '../components/OtherPosts';
-// import Main from '../components/Main';
-// import Sidebar from '../components/Sidebar';
+import Main from '../components/Main';
+import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
-import post1 from '../blog-post1.md';
+import post1 from '../post1.md';
 
 
 const sections = [
@@ -79,7 +79,7 @@ export default function DefaultHome() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="lg">
+      <Container>
         <Header title="The Anonymous American" sections={sections} />
         <main>
           <FeaturedPost post={mainFeaturedPost} />
@@ -88,15 +88,14 @@ export default function DefaultHome() {
               <OtherPosts key={post.title} post={post} />
             ))}
           </Grid>
-          {/* <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="From the firehose" posts={posts} />
+          <Grid container spacing={5} sx={{ mt: 3 }}>
+            {/* <Main title="From the firehose" posts={posts} /> */}
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
               archives={sidebar.archives}
-              social={sidebar.social}
             />
-          </Grid> */}
+          </Grid>
         </main>
       </Container>
       <Footer/>
