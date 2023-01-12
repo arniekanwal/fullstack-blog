@@ -1,5 +1,3 @@
-# Sample blog post
-
 _April 1, 2020 by [Olivier](/)_
 
 This blog post shows a few different types of content that are supported and styled with

@@ -22,6 +22,7 @@ function Header(props) {
           align="center"
           noWrap
           sx={{ flex: 1 }}
+          fontFamily=''
         >
           {title}
         </Typography>

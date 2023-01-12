@@ -9,11 +9,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../components/Header';
 import FeaturedPost from '../components/FeaturedPost';
 import OtherPosts from '../components/OtherPosts';
-import Main from '../components/Main';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
-import post1 from '../post1.md';
-
 
 const sections = [
   { title: 'Technology', url: '#' },
@@ -28,7 +25,7 @@ const mainFeaturedPost = {
   title: 'Title of a longer featured blog post',
   description:
     "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://source.unsplash.com/random',
+  image: 'https://images.unsplash.com/photo-1671629075554-c6074e48cdca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY3MzQ5NzYwMw&ixlib=rb-4.0.3&q=80&w=1080',
   imageText: 'main image description',
   linkText: 'Continue reading…',
 };
@@ -52,24 +49,12 @@ const featuredPosts = [
   },
 ];
 
-const posts = [post1];
-
 const sidebar = {
   title: 'About',
   description:
-    'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.',
+    'Welcome to the Anonymous American, a personal blog covering all topics from current events to technology and more. This blog is an experiment for fullstack web development, learning popular frameworks like React, and discovering the power of cloud solutions like Firebase.',
   archives: [
-    { title: 'March 2020', url: '#' },
-    { title: 'February 2020', url: '#' },
-    { title: 'January 2020', url: '#' },
-    { title: 'November 1999', url: '#' },
-    { title: 'October 1999', url: '#' },
-    { title: 'September 1999', url: '#' },
-    { title: 'August 1999', url: '#' },
-    { title: 'July 1999', url: '#' },
-    { title: 'June 1999', url: '#' },
-    { title: 'May 1999', url: '#' },
-    { title: 'April 1999', url: '#' },
+    { title: 'Not Available', url: '#'},
   ]
 };
 
@@ -89,7 +74,6 @@ export default function DefaultHome() {
             ))}
           </Grid>
           <Grid container spacing={5} sx={{ mt: 3 }}>
-            {/* <Main title="From the firehose" posts={posts} /> */}
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
