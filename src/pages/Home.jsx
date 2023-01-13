@@ -60,7 +60,7 @@ const sidebar = {
 
 const theme = createTheme();
 
-export default function DefaultHome() {
+export default function Home() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

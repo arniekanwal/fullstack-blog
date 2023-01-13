@@ -3,9 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 
 // Pages
-// import Layout from "./pages/Layout";
-import DefaultHome from "./pages/DefaultHome";
-import UserHome from "./pages/UserHome";
+import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -25,19 +23,19 @@ export default function App() {
             <AuthProvider>
                 <Routes>
                     {/* <Route path="/" element={<Layout />}> */}
-                        <Route path='/'
+                        {/* <Route path='/'
                             element = {
                                 <PrivateRoute>
                                     <UserHome />
                                 </PrivateRoute>
-                            }></Route>
+                            }></Route> */}
                         <Route path='/update-profile'
                             element = {
                                 <PrivateRoute>
                                     <UpdateProfile />
                                 </PrivateRoute>
                             }></Route>
-                        <Route path ="/defaulthome" element={<DefaultHome />} />
+                        <Route path="/" element={<Home />} />
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} /> 
