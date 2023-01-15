@@ -26,7 +26,7 @@ const sections = [
 
 const theme = createTheme();
 
-export default function Blogs() {
+export default function CreateBlog() {
 
     const [post, setPost] = useState('');
 
@@ -40,6 +40,21 @@ export default function Blogs() {
             })
             .catch(err => console.log(err));
     });
+
+    // useEffect(() => {
+    //     const getRecentBlogs = async () => {
+    //       const blogRef = collection(db, "blogs");
+    //       const recentBlogs = query(
+    //         blogRef,
+    //         orderBy("timestamp", "desc"),
+    //         limit(5)
+    //       );
+    //       const docSnapshot = await getDocs(recentBlogs);
+    //       setBlogs(docSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    //     };
+    
+    //     getRecentBlogs();
+    // }, []);
 
     return (
         <ThemeProvider theme={theme}>

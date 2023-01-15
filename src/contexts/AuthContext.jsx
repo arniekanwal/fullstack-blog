@@ -1,4 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react'
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut,
+    sendPasswordResetEmail,
+    updatePassword,
+    updateEmail
+} from "firebase/auth";
 import { auth } from '../firebase';
 
 const AuthContext = React.createContext();
@@ -12,37 +21,37 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
 
     // signup function
-    function signup(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password);
+    function signup(auth, email, password) {
+        return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // login function
-    function login(email, password) {
-        return auth.signInWithEmailAndPassword(email, password);
+    function login(auth, email, password) {
+        return signInWithEmailAndPassword(auth, email, password);
     }
 
     // logout (end session)
-    function logout() {
-        return auth.signOut();
+    function logout(auth) {
+        return signOut(auth);
     }
 
     // manage reseting user password
-    function resetPassword(email) {
-        return auth.sendPasswordResetEmail(email);
+    function resetPassword(auth, email) {
+        return sendPasswordResetEmail(auth, email);
     }
 
     // update user email
-    function updateEmail(email) {
-        return currentUser.updateEmail(email);
+    function updateUserEmail(user, email) {
+        return updateEmail(user, email);
     }
 
     // update user password
-    function updatePassword(password) {
-        return currentUser.updatePassword(password);
+    function updateUserPassword(user, password) {
+        return updatePassword(user, password);
     }
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
+        const unsubscribe = onAuthStateChanged(auth, user => {
             setCurrentUser(user);
             setLoading(false);
         })
@@ -56,8 +65,8 @@ export function AuthProvider({ children }) {
         logout,
         resetPassword,
         signup,
-        updateEmail,
-        updatePassword
+        updateUserEmail,
+        updateUserPassword
     };
 
     return (

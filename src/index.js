@@ -4,7 +4,7 @@ import { AuthProvider } from './contexts/AuthContext';
 
 // Pages
 import Home from "./pages/Home";
-import Blogs from "./pages/Blogs";
+import CreateBlog from "./pages/CreateBlog";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -22,13 +22,6 @@ export default function App() {
         <BrowserRouter>
             <AuthProvider>
                 <Routes>
-                    {/* <Route path="/" element={<Layout />}> */}
-                        {/* <Route path='/'
-                            element = {
-                                <PrivateRoute>
-                                    <UserHome />
-                                </PrivateRoute>
-                            }></Route> */}
                         <Route path='/update-profile'
                             element = {
                                 <PrivateRoute>
@@ -36,7 +29,7 @@ export default function App() {
                                 </PrivateRoute>
                             }></Route>
                         <Route path="/" element={<Home />} />
-                        <Route path="/blogs" element={<Blogs />} />
+                        <Route path="/blogs" element={<CreateBlog />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} /> 
                         <Route path="/forgot-password" element={<ForgotPassword />} />

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, Card, Alert, Container } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
+import { auth } from "../firebase";
 import { Link } from 'react-router-dom';
 
 
@@ -19,7 +20,7 @@ export default function ForgotPassword() {
             setError('');
             setMessage('');
             setLoading(true);
-            await resetPassword(emailRef.current.value);
+            await resetPassword(auth, emailRef.current.value);
             setMessage("Check your inbox for further instructions");
         } catch {
             setError("Failed to reset password");

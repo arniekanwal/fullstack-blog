@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import HomeIcon from '@mui/icons-material/Home';
 import Alert from '@mui/material/Alert';
-
+import { auth } from "../firebase";
 
 function Header(props) {
   const { sections, title } = props;
@@ -24,7 +24,7 @@ function Header(props) {
       setError('');
 
       try {
-          await logout();
+          await logout(auth);
           history('/login');
       } catch {
           setError('Failed to log out');
