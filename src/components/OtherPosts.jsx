@@ -30,7 +30,7 @@ function OtherPosts(props) {
           </CardContent>
           <CardMedia
             component="img"
-            sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
+            sx={{ height: 275, width: 160, display: { xs: 'none', sm: 'block' } }}
             image={post.image}
             alt={post.imageLabel}
           />

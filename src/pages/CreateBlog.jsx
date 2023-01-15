@@ -1,17 +1,20 @@
 import React, { useState, useEffect} from 'react';
 
+// Firebase
+// import { collection, getDocs, limit, query, orderBy } from "firebase/firestore";
+// import { db } from "../firebase";
+
 // Material UI Themes
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-// My Blog Components
+// JSX Components
 import Header from '../components/Header';
 import Main from '../components/Main';
 // import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
-// import post1 from '../post1.md';
 
 const sections = [
     { title: 'Technology', url: '#' },
@@ -22,13 +25,12 @@ const sections = [
     { title: 'Travel', url: '#' },
   ];
 
-// const posts = [post1];
-
 const theme = createTheme();
 
 export default function CreateBlog() {
 
     const [post, setPost] = useState('');
+    // const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         import('../post1.md')

@@ -29,7 +29,7 @@ export default function App() {
                                 </PrivateRoute>
                             }></Route>
                         <Route path="/" element={<Home />} />
-                        <Route path="/blogs" element={<CreateBlog />} />
+                        <Route path="/blogs:id" element={<CreateBlog />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} /> 
                         <Route path="/forgot-password" element={<ForgotPassword />} />

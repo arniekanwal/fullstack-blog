@@ -1,5 +1,5 @@
 // Material UI Themes
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -11,63 +11,92 @@ import FeaturedPost from '../components/FeaturedPost';
 import OtherPosts from '../components/OtherPosts';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
+import Spinner from '../components/Spinner';
 
-const sections = [
-  { title: 'Technology', url: '#' },
-  { title: 'Business', url: '#' },
-  { title: 'Politics', url: '#' },
-  { title: 'Opinion', url: '#' },
-  { title: 'Science', url: '#' },
-  { title: 'Travel', url: '#' },
-];
-
-const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://images.unsplash.com/photo-1671629075554-c6074e48cdca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY3MzQ5NzYwMw&ixlib=rb-4.0.3&q=80&w=1080',
-  imageText: 'main image description',
-  linkText: 'Continue reading…',
-};
-
-const featuredPosts = [
-  {
-    title: 'Featured post',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-  },
-  {
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageLabel: 'Image Text',
-  },
-];
-
-const sidebar = {
-  title: 'About',
-  description:
-    'Welcome to the Anonymous American, a personal blog covering all topics from current events to technology and more. This blog is an experiment for fullstack web development, learning popular frameworks like React, and discovering the power of cloud solutions like Firebase.',
-  archives: [
-    { title: 'Not Available', url: '#'},
-  ]
-};
-
-const theme = createTheme();
+// Firebase Imports
+import { collection, getDocs, limit, query, orderBy } from "firebase/firestore";
+import { db } from "../firebase";
 
 export default function Home() {
+
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getRecentBlogs = async () => {
+      const blogRef = collection(db, "blogs");
+      const recentBlogs = query(
+        blogRef,
+        orderBy('postDate', 'desc'),
+        limit(3)
+      );
+      const snapshot = await getDocs(recentBlogs);
+      setPosts(snapshot.docs.map((doc) => ({ id: doc.id, title: doc.title, ...doc.data() })));
+      setLoading(false);
+    };
+
+    getRecentBlogs();
+  }, []);
+
+  console.log(posts);
+  console.log(posts[0]);
+
+  const sections = [
+    { title: 'Technology', url: '#' },
+    { title: 'Business', url: '#' },
+    { title: 'Politics', url: '#' },
+    { title: 'Opinion', url: '#' },
+    { title: 'Science', url: '#' },
+    { title: 'Travel', url: '#' },
+  ];
+
+  const mainFeaturedPost = {
+    title: posts[0]?.title,
+    description: posts[0]?.description,
+    image: posts[0]?.imgUrl,
+    imageText: 'null',
+    linkText: 'Continue reading…',
+  };
+
+  const featuredPosts = [
+    {
+      title: posts[1]?.title,
+      date: posts[1]?.postDate.toDate().toDateString(),
+      description: posts[1]?.description,
+      image: posts[1]?.imgUrl,
+      imageLabel: 'null',
+    },
+    {
+      title: posts[2]?.title,
+      date: posts[2]?.postDate.toDate().toDateString(),
+      description: posts[2]?.description,
+      image: posts[2]?.imgUrl,
+      imageLabel: 'null',
+    },
+  ];
+
+  const sidebar = {
+    title: 'About',
+    description:
+    'Welcome to the Anonymous American, a personal blog covering all topics from current events to technology and more. This blog is an experiment for fullstack web development, learning popular frameworks like React, and discovering the power of cloud solutions like Firebase.',
+    archives: [
+      { title: 'Not Available', url: '#'},
+    ]
+  };
+
+  const theme = createTheme();
+
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container>
         <Header title="The Anonymous American" sections={sections} />
         <main>
-          <FeaturedPost post={mainFeaturedPost} />
+          <FeaturedPost post={mainFeaturedPost}/>
           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <OtherPosts key={post.title} post={post} />

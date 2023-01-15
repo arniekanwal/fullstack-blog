@@ -36,12 +36,12 @@ Sidebar.propTypes = {
     }),
   ).isRequired,
   description: PropTypes.string.isRequired,
-  social: PropTypes.arrayOf(
-    PropTypes.shape({
-      icon: PropTypes.elementType.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  // social: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     icon: PropTypes.elementType.isRequired,
+  //     name: PropTypes.string.isRequired,
+  //   }),
+  // ).isRequired,
   title: PropTypes.string.isRequired,
 };
 

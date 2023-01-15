@@ -74,7 +74,7 @@ function Header(props) {
             variant="body2"
             href={section.url}
             sx={{ p: 1, flexShrink: 0 }}
-            onClick={() => navigate("/blogs")}>
+            onClick={() => navigate("/blogs:id")}>
             {section.title}
           </Link>
         ))}
