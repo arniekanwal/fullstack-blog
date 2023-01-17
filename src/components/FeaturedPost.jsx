@@ -1,9 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Paper, Typography, Grid, Link, Box } from '@mui/material';
 
 function FeaturedPost(props) {
   const { post } = props;
+
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/blogs/${post.id}`; 
+    navigate(path);
+  }
 
   return (
     <Paper
@@ -44,7 +51,7 @@ function FeaturedPost(props) {
             <Typography variant="h5" color="inherit" paragraph>
               {post.description}
             </Typography>
-            <Link variant="subtitle1" href="#">
+            <Link variant="subtitle1" onClick={routeChange}>
               {post.linkText}
             </Link>
           </Box>
@@ -61,6 +68,7 @@ FeaturedPost.propTypes = {
     imageText: PropTypes.string.isRequired,
     linkText: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
   }).isRequired,
 };
 

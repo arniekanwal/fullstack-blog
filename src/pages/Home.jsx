@@ -53,6 +53,7 @@ export default function Home() {
     image: posts[0]?.imgUrl,
     imageText: 'null',
     linkText: 'Continue reading…',
+    id: posts[0]?.id,
   };
 
   const featuredPosts = [
