@@ -1,18 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
+import { Typography, Grid, Card, CardActionArea, CardContent, CardMedia } from '@mui/material';
 
 function OtherPosts(props) {
   const { post } = props;
 
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/blogs/${post.id}`; 
+    navigate(path);
+  }
+
   return (
     <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href="#">
+      <CardActionArea component="a" onClick={routeChange}>
         <Card sx={{ display: 'flex' }}>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5">
@@ -47,6 +49,7 @@ OtherPosts.propTypes = {
     image: PropTypes.string.isRequired,
     imageLabel: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
   }).isRequired,
 };
 

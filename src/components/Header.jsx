@@ -5,12 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 // MUI Themes and Features
 import PropTypes from 'prop-types';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
 import HomeIcon from '@mui/icons-material/Home';
-import Alert from '@mui/material/Alert';
+import { Toolbar, Button, Typography, Link, Alert } from '@mui/material';
 import { auth } from "../firebase";
 
 function Header(props) {
@@ -73,8 +69,7 @@ function Header(props) {
             key={section.title}
             variant="body2"
             href={section.url}
-            sx={{ p: 1, flexShrink: 0 }}
-            onClick={() => navigate("/blogs:id")}>
+            sx={{ p: 1, flexShrink: 0 }}>
             {section.title}
           </Link>
         ))}

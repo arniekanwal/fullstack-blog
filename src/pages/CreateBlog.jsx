@@ -1,8 +1,9 @@
 import React, { useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 
 // Firebase
-// import { collection, getDocs, limit, query, orderBy } from "firebase/firestore";
-// import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 // Material UI Themes
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,50 +14,50 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 // JSX Components
 import Header from '../components/Header';
 import Main from '../components/Main';
-// import Sidebar from '../components/Sidebar';
+import Spinner from '../components/Spinner';
 import Footer from '../components/Footer';
-
-const sections = [
-    { title: 'Technology', url: '#' },
-    { title: 'Business', url: '#' },
-    { title: 'Politics', url: '#' },
-    { title: 'Opinion', url: '#' },
-    { title: 'Science', url: '#' },
-    { title: 'Travel', url: '#' },
-  ];
 
 const theme = createTheme();
 
 export default function CreateBlog() {
 
+    const sections = [
+        { title: 'Technology', url: '#' },
+        { title: 'Business', url: '#' },
+        { title: 'Politics', url: '#' },
+        { title: 'Opinion', url: '#' },
+        { title: 'Science', url: '#' },
+        { title: 'Travel', url: '#' },
+    ];
+
     const [post, setPost] = useState('');
-    // const [loading, setLoading] = useState(true);
+    const [markdown, setMarkdown] = useState('');
+    const [loading, setLoading] = useState(true);
+
+    let { docId } = useParams();
 
     useEffect(() => {
-        import('../post1.md')
-            .then(res => {
-                fetch(res.default)
-                    .then(res => res.text())
-                    .then(res => setPost(res))
-                    .catch(err => console.log(err));
-            })
-            .catch(err => console.log(err));
+        const getRecentBlogs = async () => {
+            const blogRef = doc(db, "blogs", docId)
+            const docSnap = await getDoc(blogRef);
+            setPost(docSnap.data()); 
+            setLoading(false);
+        }
+
+        getRecentBlogs();
     });
 
-    // useEffect(() => {
-    //     const getRecentBlogs = async () => {
-    //       const blogRef = collection(db, "blogs");
-    //       const recentBlogs = query(
-    //         blogRef,
-    //         orderBy("timestamp", "desc"),
-    //         limit(5)
-    //       );
-    //       const docSnapshot = await getDocs(recentBlogs);
-    //       setBlogs(docSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    //     };
-    
-    //     getRecentBlogs();
-    // }, []);
+    if (loading) {
+        return <Spinner />;
+    }
+
+    fetch(post?.postUrl)
+        .then((response) => {
+        response.text().then(function(text) {
+            setMarkdown(text);
+        });
+    });
+        
 
     return (
         <ThemeProvider theme={theme}>
@@ -65,12 +66,7 @@ export default function CreateBlog() {
                 <Header title="The Anonymous American" sections={sections} />
                 <main>
                     <Grid container spacing={5} sx={{ mt: 2 }}>
-                        <Main title="#From the firehose" posts={post} />
-                        {/* <Sidebar
-                        title={sidebar.title}
-                        description={sidebar.description}
-                        archives={sidebar.archives}
-                        /> */}
+                        <Main title={''} posts={markdown} />
                     </Grid>
                 </main>
             </Container>

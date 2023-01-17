@@ -38,9 +38,6 @@ export default function Home() {
     getRecentBlogs();
   }, []);
 
-  console.log(posts);
-  console.log(posts[0]);
-
   const sections = [
     { title: 'Technology', url: '#' },
     { title: 'Business', url: '#' },
@@ -65,6 +62,7 @@ export default function Home() {
       description: posts[1]?.description,
       image: posts[1]?.imgUrl,
       imageLabel: 'null',
+      id: posts[1]?.id,
     },
     {
       title: posts[2]?.title,
@@ -72,6 +70,7 @@ export default function Home() {
       description: posts[2]?.description,
       image: posts[2]?.imgUrl,
       imageLabel: 'null',
+      id: posts[2]?.id,
     },
   ];
 

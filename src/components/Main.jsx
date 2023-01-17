@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
+import { Grid, Typography, Divider } from '@mui/material';
 import Markdown from 'markdown-to-jsx';
 
-function Main(props) {
-  const { posts, title } = props;
+function Main({ posts, title }) {
 
   return (
     <Grid
