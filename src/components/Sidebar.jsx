@@ -1,12 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
+import { Grid, Paper, Typography, Link } from '@mui/material';
 
 function Sidebar(props) {
   const { archives, description, title } = props;
+  const navigate = useNavigate(); 
 
   return (
     <Grid item xs={12} md={4}>
@@ -20,7 +19,10 @@ function Sidebar(props) {
         Archives
       </Typography>
       {archives.map((archive) => (
-        <Link display="block" variant="body1" href={archive.url} key={archive.title}>
+        <Link display="block" variant="body1" onClick={() => (archive.url !== "#") 
+          ? navigate(`/blogs/${archive.url}`) 
+          : null
+        }>
           {archive.title}
         </Link>
       ))}
@@ -34,14 +36,8 @@ Sidebar.propTypes = {
       title: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
     }),
-  ).isRequired,
+  ),
   description: PropTypes.string.isRequired,
-  // social: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     icon: PropTypes.elementType.isRequired,
-  //     name: PropTypes.string.isRequired,
-  //   }),
-  // ).isRequired,
   title: PropTypes.string.isRequired,
 };
 

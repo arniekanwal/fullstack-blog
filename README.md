@@ -1,4 +1,4 @@
-# _Personal Blog_
+# _Fullstack Blog_
 
 ## _Overview_
 
@@ -6,6 +6,6 @@ Creating a working fullstack web application that will serve as a personal blog.
 
 ## _Intermediate Goals_
 
-* change firebase authentication to use firebase version 9 instead of compat API
-* load blogs dynamically when clicked on from home page
+* fix title and date on all posts (add an image loader as well)
+* make dynamic links for sections on header 
 * purhcase domain name, host through firebase with security certificate

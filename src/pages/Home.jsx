@@ -39,12 +39,13 @@ export default function Home() {
   }, []);
 
   const sections = [
-    { title: 'Technology', url: '#' },
-    { title: 'Business', url: '#' },
-    { title: 'Politics', url: '#' },
-    { title: 'Opinion', url: '#' },
-    { title: 'Science', url: '#' },
-    { title: 'Travel', url: '#' },
+    { title: 'Technology' },
+    { title: 'Business' },
+    { title: 'Politics' },
+    { title: 'Opinion' },
+    { title: 'Science' },
+    { title: 'Travel' },
+    { title: 'Literature' },
   ];
 
   const mainFeaturedPost = {

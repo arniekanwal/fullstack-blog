@@ -22,12 +22,13 @@ const theme = createTheme();
 export default function CreateBlog() {
 
     const sections = [
-        { title: 'Technology', url: '#' },
-        { title: 'Business', url: '#' },
-        { title: 'Politics', url: '#' },
-        { title: 'Opinion', url: '#' },
-        { title: 'Science', url: '#' },
-        { title: 'Travel', url: '#' },
+        { title: 'Technology' },
+        { title: 'Business' },
+        { title: 'Politics' },
+        { title: 'Opinion' },
+        { title: 'Science' },
+        { title: 'Travel' },
+        { title: 'Literature' },
     ];
 
     const [post, setPost] = useState('');
@@ -45,7 +46,7 @@ export default function CreateBlog() {
         }
 
         getRecentBlogs();
-    });
+    }, [docId]);
 
     if (loading) {
         return <Spinner />;

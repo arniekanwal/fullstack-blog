@@ -8,7 +8,8 @@ import CreateBlog from "./pages/CreateBlog";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
-import UpdateProfile from './pages/UpdateProfile';
+import UpdateProfile from "./pages/UpdateProfile";
+import Tag from "./pages/Tag";
 
 // Components
 import PrivateRoute from "./components/PrivateRoute";
@@ -34,6 +35,7 @@ export default function App() {
                         <Route path="/signup" element={<Signup />} /> 
                         <Route path="/forgot-password" element={<ForgotPassword />} />
                         <Route path="/blogs/:docId" element={<CreateBlog />} />
+                        <Route path="/tags/:tagname" element={<Tag />} />
                 </Routes>
             </AuthProvider>
         </BrowserRouter>

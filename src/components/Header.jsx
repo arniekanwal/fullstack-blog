@@ -68,7 +68,7 @@ function Header(props) {
             noWrap
             key={section.title}
             variant="body2"
-            href={section.url}
+            onClick={() => navigate(`/tags/${(section.title).toLowerCase()}`)}
             sx={{ p: 1, flexShrink: 0 }}>
             {section.title}
           </Link>
@@ -82,7 +82,6 @@ Header.propTypes = {
   sections: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
     }),
   ).isRequired,
   title: PropTypes.string.isRequired,
