@@ -67,7 +67,7 @@ export default function CreateBlog() {
                 <Header title="The Anonymous American" sections={sections} />
                 <main>
                     <Grid container spacing={5} sx={{ mt: 2 }}>
-                        <Main title={''} posts={markdown} />
+                        <Main title={'#' + post?.title} posts={markdown} />
                     </Grid>
                 </main>
             </Container>
